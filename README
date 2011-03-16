@@ -21,4 +21,3 @@ MakeAJeff.prototype.makeAwesome = function() {
 
 var jeffBuilder = new MakeAJeff();
 setInterval($.bind(jeffBuilder.makeAwesome, jeffBuilder), 500);
->>> 0 to infinity
