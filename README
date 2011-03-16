@@ -1,0 +1,24 @@
+This script will add some basic functionality that jQuery doesn't ship with. At this point, these functions are pretty naive but that can change.
+
+$.size({'name': 'Jeff', 'age': 23, 'isAwesome': true})
+>>> true
+
+$.values({'name': 'Jeff', 'age': 23, 'isAwesome': true})
+>>> ['Jeff', 23, true]
+
+var MakeAJeff = function() {
+	this.name = 'Jeff';
+	this.levelOfAwesome = 0;
+};
+
+MakeAJeff.prototype.makeAwesome = function() {
+	if(this.levelOfAwesome < 10) {
+		this.levelOfAwesome++;
+	} else {
+		// remove your timer, silly.
+	}
+};
+
+var jeffBuilder = new MakeAJeff();
+setInterval($.bind(jeffBuilder.makeAwesome, jeffBuilder), 500);
+>>> 0 to infinity

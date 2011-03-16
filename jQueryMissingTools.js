@@ -19,7 +19,7 @@ $.extend({
 		
 		$.each(map, function(key, value) {
 			if (hasOwnProperty.call(map, key)) {
-				values.push(key);
+				values.push(value);
 			}
 		});
 
@@ -34,3 +34,15 @@ $.extend({
 	}
 
 });
+
+var MakeAJeff = function() {
+    this.name = 'Jeff';
+    this.levelOfAwesome = 0;
+};
+
+MakeAJeff.prototype.makeAwesome = function() {
+    this.levelOfAwesome++; 
+};
+
+var jeffBuilder = new MakeAJeff();
+setInterval(jeffBuilder.deep, 500);
