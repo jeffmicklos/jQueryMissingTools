@@ -39,11 +39,11 @@ $.extend({
 
 		$.each(collection, function(i, item) {
 
-            if(item) {
-                segmentedCollection.push(collection.splice(0, number));
-            } else {
-                $.break;
-            }
+			if(item) {
+				segmentedCollection.push(collection.splice(0, number));
+			} else {
+				$.break;
+			}
 
 		});
 
