@@ -31,6 +31,24 @@ $.extend({
 			functionToCall.apply(object, arguments);
 		};
 		
+	},
+
+	segment: function(collection, number) {
+
+		var segmentedCollection = [];
+
+		$.each(collection, function(i, item) {
+
+            if(item) {
+                segmentedCollection.push(collection.splice(0, number));
+            } else {
+                $.break;
+            }
+
+		});
+
+		return segmentedCollection;
+
 	}
 
 });
