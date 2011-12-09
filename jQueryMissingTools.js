@@ -26,29 +26,41 @@ $.extend({
 		return values;
 	},
 
-	bind: function(functionToCall, object) {
-		return function() {
-			functionToCall.apply(object, arguments);
-		};
-
-	},
-	
 	segment: function(collection, number) {
-		
-		var segmentedCollection = [];
-		
-		$.each(collection, function(i, item) {
-
-            if(item) {
-                segmentedCollection.push(collection.splice(0, number));
-            } else {
-                $.break;
-            }
-			
-		});
 	
-		return segmentedCollection;
+	    if(number === 0 || number > collection.length) {
+	        return collection;
+	    }
+		
+		var i;
+	    var segmentedCollection = [];
+	    var collectionClone = collection;
+	    var length = collection.length / number;
+				
+	    for(i = 0; length > i; i++) {
+	
+	        if(number === 1) {
+	       	
+	       		segmentedCollection.push([collectionClone[i]]);
+	        
+	        } else {
+	            
+	            if(collection[i]) {
 
+	                segmentedCollection.push(collectionClone.splice(0, number));
+	  
+	            } else {
+	  
+	                 segmentedCollection.push(collectionClone);
+	                 
+	            }
+	
+	        }    		
+	       
+	    }
+			
+	    return segmentedCollection;
+	
 	},
 	
 	any: function(collection, functionToCall) {
