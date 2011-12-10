@@ -1,11 +1,17 @@
 $.extend({
 
-	size: function(enumerableObject) {
+	/**
+	 * Returns the number of (first-level) key/val pairs in an object
+	 * Think of Array.length but for Objects!
+	 * @param map {Object} an object of kv pairs to count
+	 * @return {number} the number of pairs in object
+	 */
+	size: function(map) {
 
 		var numberOfProperties = 0;
 
-		$.each(enumerableObject, function(key) {
-			if (hasOwnProperty.call(enumerableObject, key)) {
+		$.each(map, function(key) {
+			if (hasOwnProperty.call(map, key)) {
 				numberOfProperties++;
 			}
 		});
@@ -13,6 +19,12 @@ $.extend({
 		return numberOfProperties;
 	},
 
+	/**
+	 * Returns an array of values from an object
+	 * Think of Object.keys but... values.
+	 * @param map {Object} an object to rip values from
+	 * @return {Array} an array of ever keys value
+	 */
 	values: function(map) {
 
 		var values = [];
@@ -79,7 +91,7 @@ $.extend({
 	 */
 	getNextIndex: function(collection, index) {
 		
-		return (list[index++] ? index++ : 0)
+		return (collection[index++] ? index++ : 0)
 		
 	},
 	
@@ -90,9 +102,9 @@ $.extend({
 	 * @param index {number} the starting index
 	 * @return {number} the prev index from index
 	 */
-	getPrevIndex: function(list, index) {
+	getPrevIndex: function(collection, index) {
 		
-		return (list[index--] ? index-- : 0)
+		return (collection[index--] ? index-- : 0)
 		
 	}
 
