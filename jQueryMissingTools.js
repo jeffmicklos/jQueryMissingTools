@@ -10,7 +10,12 @@ CollectionTools = {
 
     var numberOfProperties = 0;
 
-    for(prop in obj) {
+    for(var prop in obj) {
+      /*
+        Users could possibly override `hasOwnProperty`
+        on `obj`, so we try and call it in the most
+        secure manner.
+      */
       if(Object.prototype.hasOwnProperty.call(obj, prop)) {
         numberOfProperties++;
       }
@@ -28,19 +33,15 @@ CollectionTools = {
    */
   values: function(obj) {
 
-    if(Object.hasOwnProperty('keys')) {
-      return Object.keys(obj);
-    }
-
-    var keys = [];
+    var values = [];
 
     for (var prop in obj) {
-      if(Object.prototype.hasOwnProperty.call(obj, key)) {
-        keys.push(key);
+      if(Object.prototype.hasOwnProperty.call(obj, prop)) {
+        values.push(obj[prop]);
       }
     }
 
-    return keys;
+    return values;
 
   },
 
@@ -58,7 +59,6 @@ CollectionTools = {
 
     var i,
         segmentedArray = [],
-        arrayClone = array,
         length = array.length / sliceNumber;
         
     for(i = 0; i < length; i++) {
@@ -91,7 +91,7 @@ CollectionTools = {
 
     var validValues = [];
 
-    for(prop in collection) {
+    for(var prop in collection) {
 
       var current = collection[prop];
 
@@ -107,6 +107,7 @@ CollectionTools = {
           if(current) {
             validValues.push(current);
           } else {
+            // We can bail out early if any value is false
             return false;
           }
         }
