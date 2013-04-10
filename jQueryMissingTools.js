@@ -1,4 +1,4 @@
-$.extend({
+CollectionTools = {
 
   /**
    * Returns the number of immediate key/val pairs in an object
@@ -89,30 +89,28 @@ $.extend({
    */
   any: function(collection, validator) {
 
-    var i = 0,
-        length,
-        validValues = [];
+    var validValues = [];
 
-    if(Object.prototype.toString.call(collection) === '[object Array]') {
-      length = collection.length;
-    } else {
-      length = this.size(collection);
-    }
+    for(prop in collection) {
 
-    for(;i < length; i++) {
+      var current = collection[prop];
 
-      // If a validator function is available
-      if(validator) {
-        if(validator(collection[i])) {
-          validValues.push(collection[i]);
-        }
-      // Otherwise, just check for truthiness
-      } else {
-        if(collection[i]) {
-          validValues.push(collection[i]);
+      if(Object.prototype.hasOwnProperty.call(collection, prop)) {
+
+        // If a validator function is available
+        if(validator) {
+          if(validator(current)) {
+            validValues.push(current);
+          }
+        // Otherwise, just check for truthiness
         } else {
-          return false;
+          if(current) {
+            validValues.push(current);
+          } else {
+            return false;
+          }
         }
+
       }
 
     }
@@ -147,4 +145,4 @@ $.extend({
     
   }
 
-});
+};

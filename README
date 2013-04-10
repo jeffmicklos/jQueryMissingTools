@@ -1,23 +1,17 @@
-This script will add some basic functionality that jQuery doesn't ship with.
-At this point, these functions are pretty naive.
+#Useful Array and Object functions in Javascript
 
-$.size({'name': 'Jeff', 'age': 23, 'isAwesome': true})
->>> 3
+This repo is called 'jQueryMissingTools' but at this point,
+it has nothing to do with jQuery so that needs to change soon.
 
-$.values({'name': 'Jeff', 'age': 23, 'isAwesome': true})
->>> ['Jeff', 23, true]
+Also, this lib eats up the name `CollectionTools` in the global
+namespace, so that should be rethought. I am hesistent to put
+these methods on `Object.prototype` and `Array.prototype` but
+they gotta live somewhere and `jQuery` is not the answer.
 
-$.segment([1, 2, 3, 4, 5, 6], 2)
->>> [[1, 2], [3, 4], [5, 6]]
-
-$.getNextIndex([1, 2, 3, 4, 5, 6], 1)
->>> 2
-
-$.getNextIndex([1, 2, 3, 4, 5, 6], 6)
->>> 1
-
-$.getPrevIndex([1, 2, 3, 4, 5, 6], 4)
->>> 3
-
-$.getNextIndex([1, 2, 3, 4, 5, 6], 1)
->>> 6
+## Methods:
+-    any: just like `.any?` in Ruby
+-    size: for detecting an objects size
+-    values: retreive an objects values
+-    segment: break an array into smaller N sized arrays
+-    getNextIndex: gets the next index of an array from any point
+-    getPrevIndex: gets the previous index of an array from any point
